@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Super from './components/Super';
+import superheros from './components/Superlist';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+/* через класс
+class App extends React.Component {
+  render (){
+    return (
+      <div className="App">
+        {
+          superheros.map((hero) =>
+            <Super key={hero.name} image={hero.image} name={hero.name} rating={hero.rating} description={hero.description} features={hero.features}></Super>)
+        }
+      </div>
+    );
+  }
 }
+*/
+// через функцию
+function App () {
+  const superHeroCards = superheros.map((hero) => <Super key={hero.name} image={hero.image} name={hero.name} rating={hero.rating} description={hero.description} features={hero.features}></Super>)
+
+    return (
+      <div className="App">
+        {superHeroCards}
+      </div>
+    );
+  }
 
 export default App;
